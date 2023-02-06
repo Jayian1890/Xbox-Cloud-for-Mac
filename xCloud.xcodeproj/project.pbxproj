@@ -10,10 +10,10 @@
 		7767804B29909F550086F2BE /* xCloudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767804A29909F550086F2BE /* xCloudApp.swift */; };
 		7767804D29909F550086F2BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767804C29909F550086F2BE /* ContentView.swift */; };
 		7767804F29909F560086F2BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7767804E29909F560086F2BE /* Assets.xcassets */; };
-		7767805229909F560086F2BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7767805129909F560086F2BE /* Preview Assets.xcassets */; };
 		7767805D29909F560086F2BE /* xCloudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767805C29909F560086F2BE /* xCloudTests.swift */; };
 		7767806729909F560086F2BE /* xCloudUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767806629909F560086F2BE /* xCloudUITests.swift */; };
 		7767806929909F560086F2BE /* xCloudUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767806829909F560086F2BE /* xCloudUITestsLaunchTests.swift */; };
+		776780762990A1200086F2BE /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776780752990A1200086F2BE /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,13 +38,13 @@
 		7767804A29909F550086F2BE /* xCloudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xCloudApp.swift; sourceTree = "<group>"; };
 		7767804C29909F550086F2BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7767804E29909F560086F2BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7767805129909F560086F2BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7767805329909F560086F2BE /* xCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xCloud.entitlements; sourceTree = "<group>"; };
 		7767805829909F560086F2BE /* xCloudTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xCloudTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7767805C29909F560086F2BE /* xCloudTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xCloudTests.swift; sourceTree = "<group>"; };
 		7767806229909F560086F2BE /* xCloudUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xCloudUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7767806629909F560086F2BE /* xCloudUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xCloudUITests.swift; sourceTree = "<group>"; };
 		7767806829909F560086F2BE /* xCloudUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xCloudUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		776780752990A1200086F2BE /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,17 +99,9 @@
 				7767804C29909F550086F2BE /* ContentView.swift */,
 				7767804E29909F560086F2BE /* Assets.xcassets */,
 				7767805329909F560086F2BE /* xCloud.entitlements */,
-				7767805029909F560086F2BE /* Preview Content */,
+				776780752990A1200086F2BE /* WebView.swift */,
 			);
 			path = xCloud;
-			sourceTree = "<group>";
-		};
-		7767805029909F560086F2BE /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				7767805129909F560086F2BE /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		7767805B29909F560086F2BE /* xCloudTests */ = {
@@ -233,7 +225,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7767805229909F560086F2BE /* Preview Assets.xcassets in Resources */,
 				7767804F29909F560086F2BE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				776780762990A1200086F2BE /* WebView.swift in Sources */,
 				7767804D29909F550086F2BE /* ContentView.swift in Sources */,
 				7767804B29909F550086F2BE /* xCloudApp.swift in Sources */,
 			);
@@ -416,6 +408,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = xCloud/xCloud.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -424,14 +417,18 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Xbox Cloud Gaming";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.interlacedpixel.xCloud;
+				PRODUCT_BUNDLE_IDENTIFIER = com.interlacedpixel.xcloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -443,6 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = xCloud/xCloud.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -451,14 +449,18 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Xbox Cloud Gaming";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.interlacedpixel.xCloud;
+				PRODUCT_BUNDLE_IDENTIFIER = com.interlacedpixel.xcloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};

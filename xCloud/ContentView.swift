@@ -2,20 +2,18 @@
 //  ContentView.swift
 //  xCloud
 //
-//  Created by Jared Terrance on 2/5/23.
+//  Created by Jared T on 2/5/23.
 //
 
 import SwiftUI
+import WebKit
 
 struct ContentView: View {
+    
+    private var url: URL? = URL(string: "https://www.xbox.com/play")
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        WebView(data: WebViewData(url: self.url!))
     }
 }
 
