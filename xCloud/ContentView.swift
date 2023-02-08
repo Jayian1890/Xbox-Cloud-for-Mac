@@ -9,11 +9,12 @@ import SwiftUI
 import WebKit
 
 struct ContentView: View {
+    private var url: URL? = URL(string: "https://xbox.com/play")
     
-    private var url: URL? = URL(string: "https://www.xbox.com/play")
+    private var userAgent: String = ""
     
     var body: some View {
-        WebView(data: WebViewData(url: self.url!))
+        WebView(data: WebViewData(url: self.url!, customUserAgent: userAgent))
     }
 }
 
