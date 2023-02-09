@@ -12,11 +12,14 @@ import Combine
 class WebViewData: ObservableObject {
     @Published var loading: Bool = false
     @Published var url: URL?;
-    @Published var userAgent: String
+    @Published var userAgent: String = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15"
     
-    init (url: URL, customUserAgent: String = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15") {
+    init (url: URL, customUserAgent: String) {
         self.url = url
-        self.userAgent = customUserAgent
+        
+        if (!customUserAgent.isEmpty) {
+            self.userAgent = customUserAgent
+        }
     }
 }
 
@@ -38,9 +41,10 @@ struct WebView: NSViewRepresentable {
                 let request = URLRequest(url: url)
                 nsView.customUserAgent = data.userAgent;
                 nsView.load(request)
+                
+                context.coordinator.data.url = data.url
             }
         }
-        context.coordinator.data.url = data.url
     }
     
     func makeCoordinator() -> WebViewCoordinator {
