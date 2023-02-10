@@ -38,7 +38,7 @@
 		7767803E29909F550086F2BE = {
 			isa = PBXGroup;
 			children = (
-				7767804929909F550086F2BE /* xCloud */,
+				7767804929909F550086F2BE /* Xbox Cloud */,
 				7767804829909F550086F2BE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,7 +51,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7767804929909F550086F2BE /* xCloud */ = {
+		7767804929909F550086F2BE /* Xbox Cloud */ = {
 			isa = PBXGroup;
 			children = (
 				7767804A29909F550086F2BE /* xCloudApp.swift */,
@@ -61,15 +61,15 @@
 				776780752990A1200086F2BE /* WebView.swift */,
 				7728EF072995586000799FD6 /* Recorder.swift */,
 			);
-			path = xCloud;
+			path = "Xbox Cloud";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7767804629909F550086F2BE /* xCloud */ = {
+		7767804629909F550086F2BE /* Xbox Cloud */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7767806C29909F560086F2BE /* Build configuration list for PBXNativeTarget "xCloud" */;
+			buildConfigurationList = 7767806C29909F560086F2BE /* Build configuration list for PBXNativeTarget "Xbox Cloud" */;
 			buildPhases = (
 				7767804329909F550086F2BE /* Sources */,
 				7767804429909F550086F2BE /* Frameworks */,
@@ -79,7 +79,7 @@
 			);
 			dependencies = (
 			);
-			name = xCloud;
+			name = "Xbox Cloud";
 			productName = xCloud;
 			productReference = 7767804729909F550086F2BE /* Xbox Cloud.app */;
 			productType = "com.apple.product-type.application";
@@ -99,7 +99,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7767804229909F550086F2BE /* Build configuration list for PBXProject "xCloud" */;
+			buildConfigurationList = 7767804229909F550086F2BE /* Build configuration list for PBXProject "Xbox Cloud" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7767804629909F550086F2BE /* xCloud */,
+				7767804629909F550086F2BE /* Xbox Cloud */,
 			);
 		};
 /* End PBXProject section */
@@ -323,7 +323,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7767804229909F550086F2BE /* Build configuration list for PBXProject "xCloud" */ = {
+		7767804229909F550086F2BE /* Build configuration list for PBXProject "Xbox Cloud" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7767806A29909F560086F2BE /* Debug */,
@@ -332,7 +332,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7767806C29909F560086F2BE /* Build configuration list for PBXNativeTarget "xCloud" */ = {
+		7767806C29909F560086F2BE /* Build configuration list for PBXNativeTarget "Xbox Cloud" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7767806D29909F560086F2BE /* Debug */,
