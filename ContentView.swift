@@ -15,6 +15,22 @@ struct ContentView: View {
     
     var body: some View {
         WebView(data: WebViewData(url: self.url!, customUserAgent: userAgent))
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Menu {
+                        Button(action: { recordContent() }) {
+                            Label("Record to file", systemImage: "video")
+                        }
+                    }
+                label: {
+                    Label("Add", systemImage: "plus")
+                }
+                }
+            }
+    }
+    
+    func recordContent() {
+        
     }
 }
 
