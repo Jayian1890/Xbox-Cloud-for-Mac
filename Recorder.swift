@@ -8,7 +8,7 @@
 import SwiftUI
 import ReplayKit
 
-class RecorderViewController: NSViewController {
+class ContentRecorder: NSViewController {
     
     @IBOutlet var recordButton: NSButton!
     
