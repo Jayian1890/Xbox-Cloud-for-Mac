@@ -13,6 +13,8 @@ struct ContentView: View {
     
     private var userAgent: String = ""
     
+    private var contentRecorder: ContentRecorder = ContentRecorder()
+    
     var body: some View {
         WebView(data: WebViewData(url: self.url!, customUserAgent: userAgent))
             .toolbar {
@@ -30,7 +32,7 @@ struct ContentView: View {
     }
     
     func recordContent() {
-        
+        contentRecorder.recordButtonToggle()
     }
 }
 
