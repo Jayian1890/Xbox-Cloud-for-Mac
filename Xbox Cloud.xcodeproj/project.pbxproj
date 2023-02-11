@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7728EF082995586000799FD6 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728EF072995586000799FD6 /* Recorder.swift */; };
+		7728EF082995586000799FD6 /* ContentRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728EF072995586000799FD6 /* ContentRecorder.swift */; };
 		7767804B29909F550086F2BE /* xCloudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767804A29909F550086F2BE /* xCloudApp.swift */; };
 		7767804D29909F550086F2BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767804C29909F550086F2BE /* ContentView.swift */; };
 		7767804F29909F560086F2BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7767804E29909F560086F2BE /* Assets.xcassets */; };
@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7728EF072995586000799FD6 /* Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
+		7728EF072995586000799FD6 /* ContentRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRecorder.swift; sourceTree = "<group>"; };
 		7767804729909F550086F2BE /* Xbox Cloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Xbox Cloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7767804A29909F550086F2BE /* xCloudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xCloudApp.swift; sourceTree = "<group>"; };
 		7767804C29909F550086F2BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 				7767804E29909F560086F2BE /* Assets.xcassets */,
 				7767805329909F560086F2BE /* xCloud.entitlements */,
 				776780752990A1200086F2BE /* WebView.swift */,
-				7728EF072995586000799FD6 /* Recorder.swift */,
+				7728EF072995586000799FD6 /* ContentRecorder.swift */,
 			);
 			name = xCloud;
 			sourceTree = "<group>";
@@ -136,7 +136,7 @@
 				776780762990A1200086F2BE /* WebView.swift in Sources */,
 				7767804D29909F550086F2BE /* ContentView.swift in Sources */,
 				7767804B29909F550086F2BE /* xCloudApp.swift in Sources */,
-				7728EF082995586000799FD6 /* Recorder.swift in Sources */,
+				7728EF082995586000799FD6 /* ContentRecorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
