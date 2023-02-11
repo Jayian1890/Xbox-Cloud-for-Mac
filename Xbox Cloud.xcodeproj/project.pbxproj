@@ -22,6 +22,7 @@
 		7767804E29909F560086F2BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7767805329909F560086F2BE /* xCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xCloud.entitlements; sourceTree = "<group>"; };
 		776780752990A1200086F2BE /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		7788EE3E2997216C007B19C0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 				7767805329909F560086F2BE /* xCloud.entitlements */,
 				776780752990A1200086F2BE /* WebView.swift */,
 				7728EF072995586000799FD6 /* ContentRecorder.swift */,
+				7788EE3E2997216C007B19C0 /* .gitignore */,
 			);
 			name = xCloud;
 			sourceTree = "<group>";

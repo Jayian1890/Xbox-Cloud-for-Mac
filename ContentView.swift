@@ -25,7 +25,7 @@ struct ContentView: View {
                         }
                     }
                 label: {
-                    Label("Add", systemImage: "plus")
+                    Label("Media", systemImage: "plus")
                 }
                 }
             }
