@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7728EF082995586000799FD6 /* ContentRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728EF072995586000799FD6 /* ContentRecorder.swift */; };
+		773A5CAC29992503000F1DBE /* CaptureEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A5CAB29992503000F1DBE /* CaptureEngine.swift */; };
 		7767804B29909F550086F2BE /* xCloudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767804A29909F550086F2BE /* xCloudApp.swift */; };
 		7767804D29909F550086F2BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767804C29909F550086F2BE /* ContentView.swift */; };
 		7767804F29909F560086F2BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7767804E29909F560086F2BE /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		7728EF072995586000799FD6 /* ContentRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRecorder.swift; sourceTree = "<group>"; };
+		773A5CAB29992503000F1DBE /* CaptureEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureEngine.swift; sourceTree = "<group>"; };
 		7767804729909F550086F2BE /* Xbox Cloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Xbox Cloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7767804A29909F550086F2BE /* xCloudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xCloudApp.swift; sourceTree = "<group>"; };
 		7767804C29909F550086F2BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		7767804929909F550086F2BE /* xCloud */ = {
 			isa = PBXGroup;
 			children = (
+				773A5CAB29992503000F1DBE /* CaptureEngine.swift */,
 				7767804A29909F550086F2BE /* xCloudApp.swift */,
 				7767804C29909F550086F2BE /* ContentView.swift */,
 				7767804E29909F560086F2BE /* Assets.xcassets */,
@@ -137,6 +140,7 @@
 			files = (
 				776780762990A1200086F2BE /* WebView.swift in Sources */,
 				7767804D29909F550086F2BE /* ContentView.swift in Sources */,
+				773A5CAC29992503000F1DBE /* CaptureEngine.swift in Sources */,
 				7767804B29909F550086F2BE /* xCloudApp.swift in Sources */,
 				7728EF082995586000799FD6 /* ContentRecorder.swift in Sources */,
 			);
@@ -280,7 +284,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.interlacedpixel.xcloud;
 				PRODUCT_NAME = "Xbox Cloud";
@@ -312,7 +316,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.interlacedpixel.xcloud;
 				PRODUCT_NAME = "Xbox Cloud";
