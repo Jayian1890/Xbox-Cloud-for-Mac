@@ -6,56 +6,31 @@
 //
 
 import SwiftUI
-import ReplayKit
 
+/// Class with functions for recording content from the main View window.
 class ContentRecorder: NSViewController {
     
-    @IBOutlet var recordButton: NSButton!
+    /// Defines rather or not content is being recorded.
+    private var isRecording = false
     
-    let recorder = RPScreenRecorder.shared()
-    
-    @State private var isRecording = false
-    
+    /// Starts recording content from the main content View.
     func startRecording() {
-        guard recorder.isAvailable else {
-            print("Recording is not available at this time.")
-            return
-        }
-        
-        recorder.startRecording{ [unowned self] (error) in
-            
-            guard error == nil else {
-                print("There was an error starting the recording.")
-                return
-            }
-            
-            print("Started Recording Successfully")
-            self.isRecording = true
-        }
+        print("Started Recording")
+        self.isRecording = true
     }
     
+    /// Stops recording content from the main content View.
     func stopRecording() {
-        recorder.stopRecording { [unowned self] (preview, error) in
-            print("Stopped recording")
-            
-            guard preview != nil else {
-                print("Preview controller is not available.")
-                return
-            }
-            
-            self.isRecording = false
-        }
+        print("Stopped recording")
+        self.isRecording = false;
     }
     
-    func recordButtonToggle() {
+    /// A toggle-style function that starts recording if it's currently inactive, and stops recording if it's currently active.
+    func record() {
         if !isRecording {
             startRecording()
         } else {
             stopRecording()
         }
-    }
-    
-    @IBAction func recordButtonClicked(_ sender: NSButton) {
-        recordButtonToggle()
     }
 }
