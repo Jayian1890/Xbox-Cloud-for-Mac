@@ -12,6 +12,7 @@ struct xCloudApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .background(.black)
         }
     }
 }
