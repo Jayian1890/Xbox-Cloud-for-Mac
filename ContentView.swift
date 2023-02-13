@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import WebKit
 
 /// The main View for displaying and handling the primary app window.
 struct ContentView: View {
@@ -24,20 +23,32 @@ struct ContentView: View {
         WebView(data: WebViewData(url: self.url!, customUserAgent: self.userAgent))
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    Menu {
-                        Button(action: { record() }) {
-                            Label("Record to file", systemImage: "doc")
-                        }
+                    Button(action: { record() }) {
+                        Label("Record", systemImage: "video.circle").labelStyle(.titleAndIcon)
                     }
-                label: {
-                    Label("Media", systemImage: "plus")
                 }
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: { screenshot() }) {
+                        Label("Screenshot", systemImage: "photo.circle").labelStyle(.titleAndIcon)
+                    }
                 }
             }
     }
     
+    /// Captures video frames of the current content within View
+    /// - warning:  Not imlpemented
     func record() {
-        contentRecorder.record()
+        Task {
+            //await contentRecorder.record()
+        }
+    }
+    
+    /// Captures a screenshot of the current View
+    /// - warning: Not implemented
+    func screenshot() {
+        Task {
+            //not implemented
+        }
     }
 }
 

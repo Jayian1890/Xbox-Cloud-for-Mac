@@ -28,8 +28,8 @@ class CaptureEngine: NSObject, @unchecked Sendable {
     private let logger = Logger()
     
     private var stream: SCStream?
-    private let videoSampleBufferQueue = DispatchQueue(label: "com.example.apple-samplecode.VideoSampleBufferQueue")
-    private let audioSampleBufferQueue = DispatchQueue(label: "com.example.apple-samplecode.AudioSampleBufferQueue")
+    private let videoSampleBufferQueue = DispatchQueue(label: "com.interlacedpixel.VideoSampleBufferQueue")
+    private let audioSampleBufferQueue = DispatchQueue(label: "com.interlacedpixel.AudioSampleBufferQueue")
     
     // Store the the startCapture continuation, so that you can cancel it when you call stopCapture().
     private var continuation: AsyncThrowingStream<CapturedFrame, Error>.Continuation?
