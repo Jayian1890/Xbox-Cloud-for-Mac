@@ -64,7 +64,7 @@ class ContentRecorder: NSObject {
     }
     
     /// A toggle-style function that starts recording if it's currently inactive, and stops recording if it's currently active.
-    func record() async {
+    func RecordVideo() async {
         if !isRunning {
             await startRecording()
         } else {

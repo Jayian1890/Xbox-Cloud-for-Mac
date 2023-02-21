@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AppKit
 
 /// The main View for displaying and handling the primary app window.
 struct ContentView: View {
@@ -28,7 +29,7 @@ struct ContentView: View {
                     }
                 }
                 ToolbarItem(placement: .primaryAction) {
-                    Button(action: { screenshot() }) {
+                    Button(action: { saveImage() }) {
                         Label("Screenshot", systemImage: "photo.circle").labelStyle(.titleAndIcon)
                     }
                 }
@@ -39,16 +40,23 @@ struct ContentView: View {
     /// - warning:  Not imlpemented
     func record() {
         Task {
-            //await contentRecorder.record()
+            await contentRecorder.RecordVideo()
         }
     }
     
-    /// Captures a screenshot of the current View
+    /// Saves a captured screenshot of the current View
     /// - warning: Not implemented
-    func screenshot() {
+    func saveImage() {
         Task {
-            //not implemented
+            
         }
+    }
+    
+    func getImageFromView(view: NSView) -> NSImage {
+        let rect = view.bounds
+        let data = view.dataWithPDF(inside: rect)
+        let image = NSImage(data: data)!
+        return image
     }
 }
 
