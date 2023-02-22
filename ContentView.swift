@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AppKit
+import WebKit
 
 /// The main View for displaying and handling the primary app window.
 struct ContentView: View {
@@ -26,12 +27,12 @@ struct ContentView: View {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: { record() }) {
                         Label("Record", systemImage: "video.circle").labelStyle(.titleAndIcon)
-                    }
+                    }.keyboardShortcut(KeyEquivalent("r"), modifiers: .command)
                 }
                 ToolbarItem(placement: .primaryAction) {
-                    Button(action: { saveImage() }) {
+                    Button(action: { takeSnapshot() }) {
                         Label("Screenshot", systemImage: "photo.circle").labelStyle(.titleAndIcon)
-                    }
+                    }.keyboardShortcut(KeyEquivalent("s"), modifiers: .command)
                 }
             }
     }
@@ -44,20 +45,48 @@ struct ContentView: View {
         }
     }
     
-    /// Saves a captured screenshot of the current View
-    /// - warning: Not implemented
-    func saveImage() {
-        Task {
+    func takeSnapshot() {
+        let config = WKSnapshotConfiguration()
+        WebViewCoordinator.WebView.takeSnapshot(with: config) { image, error in
+            if let error = error {
+                print("Error taking snapshot: \(error.localizedDescription)")
+                return
+            }
             
+            guard let image = image else {
+                print("Error taking snapshot: no image returned")
+                return
+            }
+            
+            saveImage(image: image)
         }
     }
     
-    func getImageFromView(view: NSView) -> NSImage {
-        let rect = view.bounds
-        let data = view.dataWithPDF(inside: rect)
-        let image = NSImage(data: data)!
-        return image
+    /// Saves a captured snapshot of the current WKWebView
+    func saveImage(image: NSImage) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd_HHmmss"
+        let dateString = dateFormatter.string(from: Date())
+        
+        if let imageData = image.tiffRepresentation,
+           let bitmapImage = NSBitmapImageRep(data: imageData),
+           let jpegData = bitmapImage.representation(using: .jpeg, properties: [:]) {
+            
+            let paths = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)
+            let directory = paths[0]
+            
+            let filename = "\(dateString).jpg"
+            let fileURL = directory.appendingPathComponent(filename)
+            
+            do {
+                try jpegData.write(to: fileURL)
+                print("Saved image: \(directory)\(filename)")
+            } catch {
+                print("Error saving image: \(error.localizedDescription)")
+            }
+        }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {

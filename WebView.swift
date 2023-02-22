@@ -56,6 +56,8 @@ struct WebView: NSViewRepresentable {
 class WebViewCoordinator: NSObject, WKNavigationDelegate {
     @ObservedObject var data: WebViewData
     
+    public static var WebView: WKWebView = WKWebView()
+    
     var webView: WKWebView = WKWebView()
     var loadedUrl: URL? = nil
     
@@ -63,6 +65,7 @@ class WebViewCoordinator: NSObject, WKNavigationDelegate {
         self.data = data
         
         super.init()
+        WebViewCoordinator.WebView = webView
         
         webView.navigationDelegate = self
     }
