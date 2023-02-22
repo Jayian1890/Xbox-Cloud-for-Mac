@@ -10,8 +10,7 @@
 		771F816029A62BA900444F33 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771F815F29A62BA900444F33 /* Media.swift */; };
 		771F816529A631B300444F33 /* screenshot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 771F816429A631B300444F33 /* screenshot.wav */; };
 		771F816729A6661A00444F33 /* Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771F816629A6661A00444F33 /* Screenshot.swift */; };
-		7728EF082995586000799FD6 /* ContentRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7728EF072995586000799FD6 /* ContentRecorder.swift */; };
-		773A5CAC29992503000F1DBE /* CaptureEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A5CAB29992503000F1DBE /* CaptureEngine.swift */; };
+		771F816929A66A9500444F33 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771F816829A66A9500444F33 /* Video.swift */; };
 		7767804B29909F550086F2BE /* xCloudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767804A29909F550086F2BE /* xCloudApp.swift */; };
 		7767804D29909F550086F2BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767804C29909F550086F2BE /* ContentView.swift */; };
 		7767804F29909F560086F2BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7767804E29909F560086F2BE /* Assets.xcassets */; };
@@ -22,8 +21,7 @@
 		771F815F29A62BA900444F33 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		771F816429A631B300444F33 /* screenshot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = screenshot.wav; sourceTree = "<group>"; };
 		771F816629A6661A00444F33 /* Screenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screenshot.swift; sourceTree = "<group>"; };
-		7728EF072995586000799FD6 /* ContentRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRecorder.swift; sourceTree = "<group>"; };
-		773A5CAB29992503000F1DBE /* CaptureEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureEngine.swift; sourceTree = "<group>"; };
+		771F816829A66A9500444F33 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		7767804729909F550086F2BE /* Xbox Cloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Xbox Cloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7767804A29909F550086F2BE /* xCloudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xCloudApp.swift; sourceTree = "<group>"; };
 		7767804C29909F550086F2BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,15 +70,14 @@
 			isa = PBXGroup;
 			children = (
 				771F816129A62F2C00444F33 /* sounds */,
-				773A5CAB29992503000F1DBE /* CaptureEngine.swift */,
 				7767804A29909F550086F2BE /* xCloudApp.swift */,
 				7767804C29909F550086F2BE /* ContentView.swift */,
+				771F816829A66A9500444F33 /* Video.swift */,
 				771F816629A6661A00444F33 /* Screenshot.swift */,
 				771F815F29A62BA900444F33 /* Media.swift */,
 				7767804E29909F560086F2BE /* Assets.xcassets */,
 				7767805329909F560086F2BE /* xCloud.entitlements */,
 				776780752990A1200086F2BE /* WebView.swift */,
-				7728EF072995586000799FD6 /* ContentRecorder.swift */,
 				7788EE3E2997216C007B19C0 /* .gitignore */,
 			);
 			name = xCloud;
@@ -159,10 +156,9 @@
 				776780762990A1200086F2BE /* WebView.swift in Sources */,
 				7767804D29909F550086F2BE /* ContentView.swift in Sources */,
 				771F816029A62BA900444F33 /* Media.swift in Sources */,
-				773A5CAC29992503000F1DBE /* CaptureEngine.swift in Sources */,
 				771F816729A6661A00444F33 /* Screenshot.swift in Sources */,
+				771F816929A66A9500444F33 /* Video.swift in Sources */,
 				7767804B29909F550086F2BE /* xCloudApp.swift in Sources */,
-				7728EF082995586000799FD6 /* ContentRecorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

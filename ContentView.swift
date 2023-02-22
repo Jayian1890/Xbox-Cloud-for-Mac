@@ -17,16 +17,14 @@ struct ContentView: View {
     private var userAgent: String = ""
     
     /// A class that contains functions for recording the view/gameplay.
-    private var contentRecorder: ContentRecorder = ContentRecorder()
+    private let video = Video()
     
     var body: some View {
         WebView(data: WebViewData(url: self.url!, customUserAgent: self.userAgent))
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        Task {
-                            await contentRecorder.RecordVideo()
-                        }
+                        Task {recordVideo()}
                     }) {
                         Label("Record", systemImage: "video.circle").labelStyle(.titleAndIcon)
                     }.keyboardShortcut(KeyEquivalent("r"), modifiers: .command)
@@ -41,6 +39,15 @@ struct ContentView: View {
             }
     }
 
+    func recordVideo() {
+        video.Configure()
+        
+        if !video.isActive {
+            video.StartCapture()
+        } else {
+            video.StopCapture()
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
