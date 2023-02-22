@@ -45,6 +45,7 @@ struct ContentView: View {
         }
     }
     
+    /// Take a snapshot of the current WKWebView
     func takeSnapshot() {
         let config = WKSnapshotConfiguration()
         WebViewCoordinator.WebView.takeSnapshot(with: config) { image, error in
@@ -62,7 +63,7 @@ struct ContentView: View {
         }
     }
     
-    /// Saves a captured snapshot of the current WKWebView
+    /// Saves a provided image to the default Downloads directory on the system
     func saveImage(image: NSImage) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd_HHmmss"
