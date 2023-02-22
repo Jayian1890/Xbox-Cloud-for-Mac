@@ -71,9 +71,7 @@ class WebViewCoordinator: NSObject, WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        DispatchQueue.main.async {
-            self.data.loading = false
-        }
+        DispatchQueue.main.async { self.data.loading = false }
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AppKit
 import WebKit
 
 /// The main View for displaying and handling the primary app window.
@@ -59,6 +58,7 @@ struct ContentView: View {
                 return
             }
             
+            Media.Screenshot()
             saveImage(image: image)
         }
     }
