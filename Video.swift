@@ -14,6 +14,8 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     
     var isConfigured: Bool = false
     
+    var framerate: Int32 = 60
+    
     let session = AVCaptureSession()
     
     let output = AVCaptureMovieFileOutput()
@@ -33,7 +35,7 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     func ConfigureSession() {
         let displayId = CGMainDisplayID()
         guard let input = AVCaptureScreenInput(displayID: displayId) else { return }
-        input.minFrameDuration = CMTimeMake(value: 1, timescale: 60)
+        input.minFrameDuration = CMTimeMake(value: 1, timescale: framerate)
         
         let window = NSApplication.shared.mainWindow!
         
