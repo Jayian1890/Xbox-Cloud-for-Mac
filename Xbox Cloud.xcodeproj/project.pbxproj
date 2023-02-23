@@ -16,6 +16,7 @@
 		7767804D29909F550086F2BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767804C29909F550086F2BE /* ContentView.swift */; };
 		7767804F29909F560086F2BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7767804E29909F560086F2BE /* Assets.xcassets */; };
 		776780762990A1200086F2BE /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776780752990A1200086F2BE /* WebView.swift */; };
+		7797B39F29A7E44F00C6D705 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797B39E29A7E44F00C6D705 /* WebClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		7767805329909F560086F2BE /* xCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xCloud.entitlements; sourceTree = "<group>"; };
 		776780752990A1200086F2BE /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		7788EE3E2997216C007B19C0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		7797B39E29A7E44F00C6D705 /* WebClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				7767804E29909F560086F2BE /* Assets.xcassets */,
 				7767805329909F560086F2BE /* xCloud.entitlements */,
 				776780752990A1200086F2BE /* WebView.swift */,
+				7797B39E29A7E44F00C6D705 /* WebClient.swift */,
 				7788EE3E2997216C007B19C0 /* .gitignore */,
 			);
 			name = xCloud;
@@ -161,6 +164,7 @@
 				7767804D29909F550086F2BE /* ContentView.swift in Sources */,
 				771F816029A62BA900444F33 /* MediaPlayer.swift in Sources */,
 				771F816729A6661A00444F33 /* Screenshot.swift in Sources */,
+				7797B39F29A7E44F00C6D705 /* WebClient.swift in Sources */,
 				771F816929A66A9500444F33 /* Video.swift in Sources */,
 				7767804B29909F550086F2BE /* xCloudApp.swift in Sources */,
 			);
