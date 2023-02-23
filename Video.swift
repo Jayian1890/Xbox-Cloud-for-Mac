@@ -18,7 +18,18 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     
     let output = AVCaptureMovieFileOutput()
     
-    func Configure() {
+    /// Toggles the recording function on and off using the isActive Bool value
+    func toggle() {
+        if !isActive {
+            StartCapture()
+        } else {
+            StopCapture()
+        }
+    }
+    
+    /// Sets various configuration settings prior to recording.
+    /// - WARNING: Requires third-party software such as Loopback for recording audio input
+    func ConfigureSession() {
         let displayId = CGMainDisplayID()
         guard let input = AVCaptureScreenInput(displayID: displayId) else { return }
         input.minFrameDuration = CMTimeMake(value: 1, timescale: 60)
@@ -71,10 +82,15 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         session.startRunning()
         print("capture session configured")
         
-        isConfigured = true
+        isConfigured.toggle()
     }
     
+    /// Starts capturing video
     func StartCapture() {
+        guard !isActive else { return }
+
+        ConfigureSession()
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd_HHmmss"
         let dateString = dateFormatter.string(from: Date())
@@ -83,14 +99,20 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         let outputPath = "\(documentsPath)/\(dateString).mp4"
         let outputFileURL = NSURL(fileURLWithPath: outputPath)
 
-        isActive = true
         output.startRecording(to: outputFileURL as URL, recordingDelegate: self)
+        
+        isActive.toggle()
     }
     
+    /// Stops recording video
     func StopCapture() {
-        isActive = false
+        guard isActive else { return }
+        
         output.stopRecording()
-        Dispose()
+        session.stopRunning()
+        isConfigured.toggle()
+        
+        isActive.toggle()
     }
     
     internal func fileOutput(_ output: AVCaptureFileOutput, didStartRecordingTo fileURL: URL, from connections: [AVCaptureConnection]) {
@@ -99,9 +121,5 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
 
     internal func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         print("stopped recording video")
-    }
-
-    func Dispose() {
-        session.stopRunning()
     }
 }

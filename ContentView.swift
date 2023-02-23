@@ -24,7 +24,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        Task {recordVideo()}
+                        Task { video.toggle() }
                     }) {
                         Label("Record", systemImage: "video.circle").labelStyle(.titleAndIcon)
                     }.keyboardShortcut(KeyEquivalent("r"), modifiers: .command)
@@ -37,16 +37,6 @@ struct ContentView: View {
                     }.keyboardShortcut(KeyEquivalent("s"), modifiers: .command)
                 }
             }
-    }
-
-    func recordVideo() {
-        video.Configure()
-        
-        if !video.isActive {
-            video.StartCapture()
-        } else {
-            video.StopCapture()
-        }
     }
 }
 
