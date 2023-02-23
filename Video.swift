@@ -36,15 +36,10 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         
         let window = NSApplication.shared.mainWindow!
         
-        guard let contentView = window.contentView else {
-            print("window has no content view. aborting.")
-            return
-        }
-        let contentRect = contentView.bounds
+        let contentRect = WebViewCoordinator.WebView.bounds
         let screenRect = window.convertToScreen(contentRect)
 
-        let menuBarHeight = NSApp.mainMenu?.menuBarHeight ?? 0
-        let capturedRect = CGRect(x: screenRect.origin.x, y: screenRect.origin.y - menuBarHeight - 5, width: screenRect.width, height: screenRect.height - menuBarHeight)
+        let capturedRect = CGRect(x: screenRect.origin.x, y: screenRect.origin.y, width: screenRect.width, height: screenRect.height)
 
         input.cropRect = capturedRect
 
