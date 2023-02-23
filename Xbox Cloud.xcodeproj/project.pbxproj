@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		771F816029A62BA900444F33 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771F815F29A62BA900444F33 /* Media.swift */; };
+		770D9B0029A7AF9A001A2622 /* video.wav in Resources */ = {isa = PBXBuildFile; fileRef = 770D9AFF29A7AF9A001A2622 /* video.wav */; };
+		771F816029A62BA900444F33 /* MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771F815F29A62BA900444F33 /* MediaPlayer.swift */; };
 		771F816529A631B300444F33 /* screenshot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 771F816429A631B300444F33 /* screenshot.wav */; };
 		771F816729A6661A00444F33 /* Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771F816629A6661A00444F33 /* Screenshot.swift */; };
 		771F816929A66A9500444F33 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771F816829A66A9500444F33 /* Video.swift */; };
@@ -18,7 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		771F815F29A62BA900444F33 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		770D9AFF29A7AF9A001A2622 /* video.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = video.wav; sourceTree = "<group>"; };
+		771F815F29A62BA900444F33 /* MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayer.swift; sourceTree = "<group>"; };
 		771F816429A631B300444F33 /* screenshot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = screenshot.wav; sourceTree = "<group>"; };
 		771F816629A6661A00444F33 /* Screenshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screenshot.swift; sourceTree = "<group>"; };
 		771F816829A66A9500444F33 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 		771F816129A62F2C00444F33 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				770D9AFF29A7AF9A001A2622 /* video.wav */,
 				771F816429A631B300444F33 /* screenshot.wav */,
 			);
 			path = sounds;
@@ -74,7 +77,7 @@
 				7767804C29909F550086F2BE /* ContentView.swift */,
 				771F816829A66A9500444F33 /* Video.swift */,
 				771F816629A6661A00444F33 /* Screenshot.swift */,
-				771F815F29A62BA900444F33 /* Media.swift */,
+				771F815F29A62BA900444F33 /* MediaPlayer.swift */,
 				7767804E29909F560086F2BE /* Assets.xcassets */,
 				7767805329909F560086F2BE /* xCloud.entitlements */,
 				776780752990A1200086F2BE /* WebView.swift */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				771F816529A631B300444F33 /* screenshot.wav in Resources */,
+				770D9B0029A7AF9A001A2622 /* video.wav in Resources */,
 				7767804F29909F560086F2BE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,7 +159,7 @@
 			files = (
 				776780762990A1200086F2BE /* WebView.swift in Sources */,
 				7767804D29909F550086F2BE /* ContentView.swift in Sources */,
-				771F816029A62BA900444F33 /* Media.swift in Sources */,
+				771F816029A62BA900444F33 /* MediaPlayer.swift in Sources */,
 				771F816729A6661A00444F33 /* Screenshot.swift in Sources */,
 				771F816929A66A9500444F33 /* Video.swift in Sources */,
 				7767804B29909F550086F2BE /* xCloudApp.swift in Sources */,

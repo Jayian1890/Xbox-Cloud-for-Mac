@@ -34,7 +34,7 @@ class Screenshot {
             }
             
             self.saveImage(image: image)
-            Media.Screenshot()
+            MediaPlayer.Screenshot()
 
             self.lastImage = image
         }

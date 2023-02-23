@@ -7,12 +7,12 @@
 
 import AVFoundation
 
-class Media {
+class MediaPlayer {
     
-    static var audioPlayer: AVAudioPlayer?
+    private static var audioPlayer: AVAudioPlayer?
     
-    static func Screenshot() {
-        let path = Bundle.main.path(forResource: "screenshot", ofType: "wav")!
+    private static func playAudio(resource: String) {
+        let path = Bundle.main.path(forResource: resource, ofType: "wav")!
         
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
@@ -24,5 +24,13 @@ class Media {
         DispatchQueue.main.async {
             audioPlayer?.play()
         }
+    }
+    
+    static func Video() {
+        MediaPlayer.playAudio(resource: "video")
+    }
+    
+    static func Screenshot() {
+        MediaPlayer.playAudio(resource: "screenshot")
     }
 }
