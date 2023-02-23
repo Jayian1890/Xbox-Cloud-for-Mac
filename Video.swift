@@ -9,25 +9,25 @@ import SwiftUI
 import AVFoundation
 
 class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
-   
-    var isActive: Bool = false
-    
-    var isConfigured: Bool = false
     
     var framerate: Int32 = 60
+
+    private var isActive: Bool = false
     
-    let session = AVCaptureSession()
+    private var isConfigured: Bool = false
     
-    let output = AVCaptureMovieFileOutput()
+    private var session = AVCaptureSession()
+    
+    private var output = AVCaptureMovieFileOutput()
     
     /// Toggles the recording function on and off using the isActive Bool value
     func toggle() {
-        MediaPlayer.Video()
         if !isActive {
             StartCapture()
         } else {
             StopCapture()
         }
+        MediaPlayer.Video()
     }
     
     /// Sets various configuration settings prior to recording.
@@ -108,8 +108,11 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         
         output.stopRecording()
         session.stopRunning()
-        isConfigured.toggle()
         
+        output = AVCaptureMovieFileOutput()
+        session = AVCaptureSession()
+        
+        isConfigured.toggle()
         isActive.toggle()
     }
     
