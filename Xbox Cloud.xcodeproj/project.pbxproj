@@ -15,7 +15,6 @@
 		7767804B29909F550086F2BE /* xCloudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767804A29909F550086F2BE /* xCloudApp.swift */; };
 		7767804D29909F550086F2BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767804C29909F550086F2BE /* ContentView.swift */; };
 		7767804F29909F560086F2BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7767804E29909F560086F2BE /* Assets.xcassets */; };
-		776780762990A1200086F2BE /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776780752990A1200086F2BE /* WebView.swift */; };
 		7797B39F29A7E44F00C6D705 /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7797B39E29A7E44F00C6D705 /* WebClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +29,6 @@
 		7767804C29909F550086F2BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7767804E29909F560086F2BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7767805329909F560086F2BE /* xCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xCloud.entitlements; sourceTree = "<group>"; };
-		776780752990A1200086F2BE /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		7788EE3E2997216C007B19C0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7797B39E29A7E44F00C6D705 /* WebClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,7 +80,6 @@
 				771F815F29A62BA900444F33 /* MediaPlayer.swift */,
 				7767804E29909F560086F2BE /* Assets.xcassets */,
 				7767805329909F560086F2BE /* xCloud.entitlements */,
-				776780752990A1200086F2BE /* WebView.swift */,
 				7797B39E29A7E44F00C6D705 /* WebClient.swift */,
 				7788EE3E2997216C007B19C0 /* .gitignore */,
 			);
@@ -160,7 +157,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				776780762990A1200086F2BE /* WebView.swift in Sources */,
 				7767804D29909F550086F2BE /* ContentView.swift in Sources */,
 				771F816029A62BA900444F33 /* MediaPlayer.swift in Sources */,
 				771F816729A6661A00444F33 /* Screenshot.swift in Sources */,
