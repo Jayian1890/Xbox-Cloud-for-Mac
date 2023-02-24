@@ -24,6 +24,8 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     
     private var output = AVCaptureMovieFileOutput()
     
+    //private var audioEngine: AudioEngine = AudioEngine()!
+    
     /// Toggles the recording function on and off using the isActive Bool value
     func toggle() {
         if !isActive {

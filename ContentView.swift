@@ -14,7 +14,7 @@ struct ContentView: View {
     
     private let webClient = WebClient()
     
-    @State private var videoButtonColor = Color.gray
+    @State private var videoButtonColor = Color.black
     
     var body: some View {
         WebClient()
@@ -40,7 +40,7 @@ struct ContentView: View {
             if video.isActive {
                 videoButtonColor = Color.red
             } else {
-                videoButtonColor = Color.gray
+                videoButtonColor = Color.black
             }
         }
     }
