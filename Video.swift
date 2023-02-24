@@ -13,7 +13,7 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     
     var framerate: Int32 = 60
 
-    private var isActive: Bool = false
+    var isActive: Bool = false
     
     private var isConfigured: Bool = false
     
@@ -40,7 +40,7 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         
         let window = NSApplication.shared.mainWindow!
         
-        let contentRect = WebViewCoordinator.WebView.bounds
+        let contentRect = WebClient.webView.bounds
         let screenRect = window.convertToScreen(contentRect)
 
         let capturedRect = CGRect(x: screenRect.origin.x, y: screenRect.origin.y, width: screenRect.width, height: screenRect.height)

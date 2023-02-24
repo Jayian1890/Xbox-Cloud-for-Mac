@@ -9,9 +9,8 @@ import WebKit
 import SwiftUI
 
 struct WebClient: NSViewRepresentable {
-    
     /// the underlaying webview of the webclient
-    var WebView: WKWebView:
+    static var webView: WKWebView = WKWebView()
     
     /// The base/home url for the webclient to load
     private var baseURl: String = "https://xbox.com/play"
@@ -30,16 +29,26 @@ struct WebClient: NSViewRepresentable {
     }
     
     func makeNSView(context: Context) -> WKWebView {
-        return WKWebView()
+        return WebClient.webView
     }
     
     func updateNSView(_ nsView: WKWebView, context: Context) {
-        self.WebView = nsView
-        
         let request = URLRequest(url: URL(string: baseURl)!)
         nsView.customUserAgent = self.userAgent
         nsView.load(request)
     }
     
+    func makeCoordinator() -> WebViewCoordinator {
+        Coordinator(webView: WebClient.webView)
+    }
 }
 
+class WebViewCoordinator: NSObject, WKNavigationDelegate {    
+    init(webView: WKWebView) {
+        WebClient.webView = webView
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("Loaded WebView")
+    }
+}
