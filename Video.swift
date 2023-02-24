@@ -11,10 +11,13 @@ import AVFoundation
 /// A class that contains functions for recording the view/gameplay.
 class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     
+    /// the frames per second used recording function
     var framerate: Int32 = 60
 
+    /// defines rather or not Video is recording
     var isActive: Bool = false
     
+    /// defines rather or not Video is configured for recording.
     private var isConfigured: Bool = false
     
     private var session = AVCaptureSession()
