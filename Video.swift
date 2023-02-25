@@ -53,7 +53,7 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         
         if let desiredDevice = deviceDiscovery(deviceName: "Xbox Cloud") {
             do {
-                //TODO: Fix 'cannot use' error
+                // TODO: Fix bug - fails to create input device after first recording
                 let audioInput = try AVCaptureDeviceInput(device: desiredDevice)
                 if session.canAddInput(audioInput) {
                     session.addInput(audioInput)
