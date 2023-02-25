@@ -10,9 +10,7 @@ import AVFoundation
 
 /// A class that contains functions for recording the view/gameplay.
 class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
-    
-    static var engine: Video? = Video()
-    
+        
     /// the frames per second used recording function
     var framerate: Int32 = 60
 
@@ -39,6 +37,10 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     /// Sets various configuration settings prior to recording.
     /// - WARNING: Requires third-party software such as Loopback for recording audio input
     func ConfigureSession() -> Bool {
+        if isConfigured {
+            return isConfigured
+        }
+        
         if let input = AVCaptureScreenInput(displayID: CGMainDisplayID()) {
             input.minFrameDuration = CMTimeMake(value: 1, timescale: framerate)
             input.cropRect = getCapturedRect()
@@ -53,7 +55,6 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         
         if let desiredDevice = deviceDiscovery(deviceName: "Xbox Cloud") {
             do {
-                // TODO: Fix bug - fails to create input device after first recording
                 let audioInput = try AVCaptureDeviceInput(device: desiredDevice)
                 if session.canAddInput(audioInput) {
                     session.addInput(audioInput)
@@ -71,7 +72,7 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         print("capture session configured")
         session.startRunning()
         
-        isConfigured.toggle()
+        isConfigured = true
         return isConfigured
     }
     
