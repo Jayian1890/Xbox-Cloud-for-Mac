@@ -24,6 +24,8 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     
     private var output = AVCaptureMovieFileOutput()
     
+    private var videoInput: AVCaptureScreenInput?
+            
     /// Toggles the recording function on and off using the isActive Bool value
     func toggle() {
         if !isActive {
@@ -34,25 +36,24 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         MediaPlayer.Video()
     }
     
-    /// Sets various configuration settings prior to recording.
-    /// - WARNING: Requires third-party software such as Loopback for recording audio input
-    func ConfigureSession() -> Bool {
-        if isConfigured {
-            return isConfigured
+    func configureVideoInput() {
+        if videoInput == nil {
+            videoInput = AVCaptureScreenInput(displayID: CGMainDisplayID())
         }
         
-        if let input = AVCaptureScreenInput(displayID: CGMainDisplayID()) {
-            input.minFrameDuration = CMTimeMake(value: 1, timescale: framerate)
-            input.cropRect = getCapturedRect()
-            
-            if session.canAddInput(input) {
-                session.addInput(input)
-            }
-        } else {
-            print("Could not find a viable capture device. Aborting...")
-            return isConfigured
+        if session.inputs.contains(videoInput!) {
+            session.removeInput(videoInput!)
         }
         
+        videoInput!.minFrameDuration = CMTimeMake(value: 1, timescale: framerate)
+        videoInput!.cropRect = getCapturedRect()
+        
+        if session.canAddInput(videoInput!) {
+            session.addInput(videoInput!)
+        }
+    }
+    
+    func configureAudioInput() {
         if let desiredDevice = deviceDiscovery(deviceName: "Xbox Cloud") {
             do {
                 let audioInput = try AVCaptureDeviceInput(device: desiredDevice)
@@ -61,31 +62,45 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
                 }
             } catch {
                 print("An error occurred: \(error.localizedDescription)")
-                return isConfigured
+                return
             }
         }
+    }
+    
+    /// Sets various configuration settings prior to recording.
+    /// - WARNING: Requires third-party software such as Loopback for recording audio input
+    func ConfigureSession() {
+        if isConfigured {
+            print("Session already configured.")
+            return
+        }
+        
+        configureVideoInput()
+        
+        configureAudioInput()
         
         if session.canAddOutput(output) {
             session.addOutput(output)
         }
         
         print("capture session configured")
-        session.startRunning()
         
         isConfigured = true
-        return isConfigured
     }
     
     /// Starts capturing video
     func StartCapture() {
         guard !isActive else { return }
 
-        if !ConfigureSession() {
+        if !isConfigured {
+            print("Please configure the session before attempting to record")
             return
         }
         
-        let outputFileURL = generateOutputURL()
-        output.startRecording(to: outputFileURL as URL, recordingDelegate: self)
+        configureVideoInput()
+        
+        session.startRunning()
+        output.startRecording(to: generateOutputURL() as URL, recordingDelegate: self)
         
         isActive.toggle()
     }
@@ -96,7 +111,6 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         
         resetCaptureSession()
         
-        //isConfigured.toggle()
         isActive.toggle()
     }
     
@@ -105,7 +119,6 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         session.stopRunning()
         session.removeOutput(output)
         session.addOutput(output)
-        session.startRunning()
     }
     
     func generateOutputURL() -> NSURL {
@@ -139,14 +152,23 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     /// crops the screen to a confined section of the main window for recording
     func getCapturedRect() -> CGRect {
         var capturedRect = CGRect()
-        DispatchQueue.main.sync {
-            let contentBounds = WebClient.webView.bounds
-            let window = NSApplication.shared.mainWindow!
-            let screenRect = window.convertToScreen(contentBounds)
-            capturedRect = CGRect(x: screenRect.origin.x, y: screenRect.origin.y, width: screenRect.width, height: screenRect.height)
-        }
+        let contentBounds = WebClient.webView.bounds
+        let window = getWindow()!
+        let screenRect = window.convertToScreen(contentBounds)
+        capturedRect = CGRect(x: screenRect.origin.x, y: screenRect.origin.y,
+                              width: screenRect.width, height: screenRect.height)
         return capturedRect
     }
+    
+    func getWindow() -> NSWindow? {
+        while NSApplication.shared.windows.isEmpty {
+            sleep(1)
+        }
+        
+        let windows = NSApplication.shared.windows
+        return windows.first
+    }
+
     
     internal func fileOutput(_ output: AVCaptureFileOutput, didStartRecordingTo fileURL: URL, from connections: [AVCaptureConnection]) {
         print("started recording video to \(fileURL)")

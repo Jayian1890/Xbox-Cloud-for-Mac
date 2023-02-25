@@ -32,16 +32,19 @@ struct ContentView: View {
                     }.keyboardShortcut(KeyEquivalent("s"), modifiers: .command)
                 }
             }
+            .onAppear {
+                Task {
+                    videoEngine.ConfigureSession()
+                }
+            }
     }
     
     func recordVideo() {
-        Task {
-            videoEngine.toggle()
-            if videoEngine.isActive {
-                videoButtonColor = Color.red
-            } else {
-                videoButtonColor = Color.secondary
-            }
+        videoEngine.toggle()
+        if videoEngine.isActive {
+            videoButtonColor = Color.red
+        } else {
+            videoButtonColor = Color.secondary
         }
     }
 }
