@@ -75,8 +75,6 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
             return
         }
         
-        configureVideoInput()
-        
         configureAudioInput()
         
         if session.canAddOutput(output) {
