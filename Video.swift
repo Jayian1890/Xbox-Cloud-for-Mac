@@ -11,6 +11,8 @@ import AVFoundation
 /// A class that contains functions for recording the view/gameplay.
 class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     
+    static var engine: Video? = Video()
+    
     /// the frames per second used recording function
     var framerate: Int32 = 60
 
@@ -23,7 +25,7 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     private var session = AVCaptureSession()
     
     private var output = AVCaptureMovieFileOutput()
-        
+    
     /// Toggles the recording function on and off using the isActive Bool value
     func toggle() {
         if !isActive {
@@ -52,13 +54,12 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         if let desiredDevice = deviceDiscovery(deviceName: "Xbox Cloud") {
             do {
                 let audioInput = try AVCaptureDeviceInput(device: desiredDevice)
-                
                 if session.canAddInput(audioInput) {
                     session.addInput(audioInput)
                 }
-            } catch {}
-        } else {
-            print("audio device 'Xbox Cloud' not found. Proceeding without audio.")
+            } catch {
+                print("audio device erorr.")
+            }
         }
         
         if session.canAddOutput(output) {
@@ -75,16 +76,11 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     func StartCapture() {
         guard !isActive else { return }
 
-        ConfigureSession()
+        if !isConfigured {
+            ConfigureSession()
+        }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd_HHmmss"
-        let dateString = dateFormatter.string(from: Date())
-        
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.downloadsDirectory, .userDomainMask, true)[0] as String
-        let outputPath = "\(documentsPath)/\(dateString).mp4"
-        let outputFileURL = NSURL(fileURLWithPath: outputPath)
-
+        let outputFileURL = generateOutputURL()
         output.startRecording(to: outputFileURL as URL, recordingDelegate: self)
         
         isActive.toggle()
@@ -94,14 +90,30 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     func StopCapture() {
         guard isActive else { return }
         
+        resetCaptureSession(session: self.session, output: self.output)
+        
+        //isConfigured.toggle()
+        isActive.toggle()
+    }
+    
+    func resetCaptureSession(session: AVCaptureSession, output: AVCaptureMovieFileOutput) {
         output.stopRecording()
         session.stopRunning()
+        session.removeOutput(output)
+        session.addOutput(output)
+        session.startRunning()
+    }
+    
+    func generateOutputURL() -> NSURL {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd_HHmmss"
+        let dateString = dateFormatter.string(from: Date())
         
-        output = AVCaptureMovieFileOutput()
-        session = AVCaptureSession()
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.downloadsDirectory, .userDomainMask, true)[0] as String
+        let outputPath = "\(documentsPath)/\(dateString).mp4"
+        let outputFileURL = NSURL(fileURLWithPath: outputPath)
         
-        isConfigured.toggle()
-        isActive.toggle()
+        return outputFileURL
     }
     
     /// Returns a single device by name that's closest to supplied 'deviceName'
