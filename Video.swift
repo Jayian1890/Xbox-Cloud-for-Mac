@@ -37,35 +37,19 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     /// Sets various configuration settings prior to recording.
     /// - WARNING: Requires third-party software such as Loopback for recording audio input
     func ConfigureSession() {
-        let displayId = CGMainDisplayID()
-        guard let input = AVCaptureScreenInput(displayID: displayId) else { return }
-        input.minFrameDuration = CMTimeMake(value: 1, timescale: framerate)
-        
-        let window = NSApplication.shared.mainWindow!
-        
-        let contentRect = WebClient.webView.bounds
-        let screenRect = window.convertToScreen(contentRect)
-
-        let capturedRect = CGRect(x: screenRect.origin.x, y: screenRect.origin.y, width: screenRect.width, height: screenRect.height)
-
-        input.cropRect = capturedRect
-
-        if session.canAddInput(input) {
-            session.addInput(input)
-        }
-        
-        let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInMicrophone], mediaType: AVMediaType.audio, position: .unspecified)
-        
-        let desiredDeviceName = "Xbox Cloud"
-        var desiredDevice: AVCaptureDevice?
-        for device in discoverySession.devices {
-            if device.localizedName == desiredDeviceName {
-                desiredDevice = device
-                break
+        if let input = AVCaptureScreenInput(displayID: CGMainDisplayID()) {
+            input.minFrameDuration = CMTimeMake(value: 1, timescale: framerate)
+            input.cropRect = getCapturedRect()
+            
+            if session.canAddInput(input) {
+                session.addInput(input)
             }
+        } else {
+            print("Could not find a viable capture device. Aborting...")
+            return
         }
         
-        if let desiredDevice = desiredDevice {
+        if let desiredDevice = deviceDiscovery(deviceName: "Xbox Cloud") {
             do {
                 let audioInput = try AVCaptureDeviceInput(device: desiredDevice)
                 
@@ -81,8 +65,8 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
             session.addOutput(output)
         }
         
-        session.startRunning()
         print("capture session configured")
+        session.startRunning()
         
         isConfigured.toggle()
     }
@@ -118,6 +102,34 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         
         isConfigured.toggle()
         isActive.toggle()
+    }
+    
+    /// Returns a single device by name that's closest to supplied 'deviceName'
+    func deviceDiscovery(deviceName: String) ->AVCaptureDevice? {
+        let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInMicrophone], mediaType: AVMediaType.audio, position: .unspecified)
+        
+        let desiredDeviceName = deviceName
+        var desiredDevice: AVCaptureDevice?
+        for device in discoverySession.devices {
+            if device.localizedName == desiredDeviceName {
+                desiredDevice = device
+                break
+            }
+        }
+        
+        return desiredDevice
+    }
+    
+    /// crops the screen to a confined section of the main window for recording
+    func getCapturedRect() -> CGRect {
+        var capturedRect = CGRect()
+        DispatchQueue.main.sync {
+            let contentBounds = WebClient.webView.bounds
+            let window = NSApplication.shared.mainWindow!
+            let screenRect = window.convertToScreen(contentBounds)
+            capturedRect = CGRect(x: screenRect.origin.x, y: screenRect.origin.y, width: screenRect.width, height: screenRect.height)
+        }
+        return capturedRect
     }
     
     internal func fileOutput(_ output: AVCaptureFileOutput, didStartRecordingTo fileURL: URL, from connections: [AVCaptureConnection]) {
