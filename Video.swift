@@ -38,7 +38,7 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     
     /// Sets various configuration settings prior to recording.
     /// - WARNING: Requires third-party software such as Loopback for recording audio input
-    func ConfigureSession() {
+    func ConfigureSession() -> Bool {
         if let input = AVCaptureScreenInput(displayID: CGMainDisplayID()) {
             input.minFrameDuration = CMTimeMake(value: 1, timescale: framerate)
             input.cropRect = getCapturedRect()
@@ -48,17 +48,19 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
             }
         } else {
             print("Could not find a viable capture device. Aborting...")
-            return
+            return isConfigured
         }
         
         if let desiredDevice = deviceDiscovery(deviceName: "Xbox Cloud") {
             do {
+                //TODO: Fix 'cannot use' error
                 let audioInput = try AVCaptureDeviceInput(device: desiredDevice)
                 if session.canAddInput(audioInput) {
                     session.addInput(audioInput)
                 }
             } catch {
-                print("audio device erorr.")
+                print("An error occurred: \(error.localizedDescription)")
+                return isConfigured
             }
         }
         
@@ -70,14 +72,15 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         session.startRunning()
         
         isConfigured.toggle()
+        return isConfigured
     }
     
     /// Starts capturing video
     func StartCapture() {
         guard !isActive else { return }
 
-        if !isConfigured {
-            ConfigureSession()
+        if !ConfigureSession() {
+            return
         }
         
         let outputFileURL = generateOutputURL()
@@ -90,13 +93,13 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     func StopCapture() {
         guard isActive else { return }
         
-        resetCaptureSession(session: self.session, output: self.output)
+        resetCaptureSession()
         
         //isConfigured.toggle()
         isActive.toggle()
     }
     
-    func resetCaptureSession(session: AVCaptureSession, output: AVCaptureMovieFileOutput) {
+    func resetCaptureSession() {
         output.stopRecording()
         session.stopRunning()
         session.removeOutput(output)
