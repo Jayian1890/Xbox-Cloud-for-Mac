@@ -36,6 +36,7 @@ class VideoCapture: NSObject, AVCaptureFileOutputRecordingDelegate {
         MediaPlayer.Video()
     }
     
+    /// prepares the video input for recording
     func configureVideoInput() {
         if videoInput == nil {
             videoInput = AVCaptureScreenInput(displayID: CGMainDisplayID())
@@ -54,6 +55,7 @@ class VideoCapture: NSObject, AVCaptureFileOutputRecordingDelegate {
         }
     }
     
+    /// prepares the audio input(s) for recording
     func configureAudioInput() {
         let deviceName = "Xbox Cloud"
         
@@ -119,6 +121,7 @@ class VideoCapture: NSObject, AVCaptureFileOutputRecordingDelegate {
         session.addOutput(output)
     }
     
+    /// Generates a file path string for the video file to be saved to.
     func generateOutputURL() -> NSURL {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyyMMdd_HHmmss"
@@ -158,6 +161,8 @@ class VideoCapture: NSObject, AVCaptureFileOutputRecordingDelegate {
         return capturedRect
     }
     
+    /// Gets the main NSWindow of the app.
+    /// This function sleeps until a window is available.
     func getWindow() -> NSWindow? {
         while NSApplication.shared.windows.isEmpty {
             sleep(1)
