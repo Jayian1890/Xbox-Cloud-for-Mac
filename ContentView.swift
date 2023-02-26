@@ -11,6 +11,8 @@ import SwiftUI
 struct ContentView: View {
     
     private let videoCapture = VideoCapture()
+    
+    private let screenshot = Screenshot()
 
     private let webClient = WebClient()
         
@@ -18,31 +20,44 @@ struct ContentView: View {
     
     var body: some View {
         WebClient()
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button(action: recordVideo) {
-                        Label("Record", systemImage: "video.circle")
-                            .labelStyle(.titleAndIcon)
-                            .foregroundColor(videoButtonColor)
-                    }.keyboardShortcut("r", modifiers: .command)
-                }
-                ToolbarItem(placement: .primaryAction) {
-                    Button(action: Screenshot().takeSnapshot) {
-                        Label("Screenshot", systemImage: "photo.circle")
-                            .labelStyle(.titleAndIcon)
-                    }.keyboardShortcut(KeyEquivalent("s"), modifiers: .command)
-                }
-            }
             .onAppear {
+                DispatchQueue.main.async {
+                    let mainMenu = NSApp.mainMenu
+                    mainMenu?.items.removeAll()
+                    
+                    let baseMenuItem = NSMenuItem(title: "Xbox Cloud", action: nil, keyEquivalent: "")
+                    let baseMenu = NSMenu()
+                    baseMenu.addItem(withTitle: "Quit", action: #selector(NSApp.terminate), keyEquivalent: "w")
+                    baseMenuItem.submenu = baseMenu
+                    NSApp.mainMenu?.addItem(baseMenuItem)
+                    
+                    let fileMenu = NSMenu(title: "File")
+                    
+                    let subMenuItem = NSMenuItem(title: "Record Video", action: #selector(videoCapture.toggle), keyEquivalent: "r")
+                    subMenuItem.keyEquivalentModifierMask = [.command]
+                    subMenuItem.target = videoCapture
+                    fileMenu.addItem(subMenuItem)
+                    
+                    let subMenuItem2 = NSMenuItem(title: "Take Screenshot", action: #selector(screenshot.takeSnapshot), keyEquivalent: "s")
+                    subMenuItem2.keyEquivalentModifierMask = [.command]
+                    subMenuItem2.target = screenshot
+                    fileMenu.addItem(subMenuItem2)
+                    
+                    let menuItem = NSMenuItem(title: "Menu2", action: nil, keyEquivalent: "")
+                    menuItem.submenu = fileMenu
+                    NSApp.mainMenu?.addItem(menuItem)
+                    
+                    mainMenu?.update()
+                }
+                
                 Task {
                     videoCapture.ConfigureSession()
                 }
             }
-    }
-    
-    func recordVideo() {
-        videoCapture.toggle()
-        videoButtonColor = videoCapture.isActive ? .red : .secondary
+        
+            .onDisappear() {
+                NSApp.terminate(self)
+            }
     }
 }
 

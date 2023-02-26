@@ -21,7 +21,7 @@ class Screenshot {
     }
     
     /// Take a snapshot of the the supplied WKWebView
-    func takeSnapshot() {
+    @objc func takeSnapshot() {
         let webview = WebClient.webView
         webview.takeSnapshot(with: config) { image, error in
             if let error = error {

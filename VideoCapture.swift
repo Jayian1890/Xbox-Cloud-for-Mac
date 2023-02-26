@@ -27,7 +27,7 @@ class VideoCapture: NSObject, AVCaptureFileOutputRecordingDelegate {
     private var videoInput: AVCaptureScreenInput?
             
     /// Toggles the recording function on and off using the isActive Bool value
-    func toggle() {
+    @objc func toggle() {
         MediaPlayer.Video()
         if !isActive {
             StartCapture()
