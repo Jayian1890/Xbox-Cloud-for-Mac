@@ -25,6 +25,8 @@ class VideoCapture: NSObject, AVCaptureFileOutputRecordingDelegate {
     private var output = AVCaptureMovieFileOutput()
     
     private var videoInput: AVCaptureScreenInput?
+    
+    private var imageView: NSImageView = NSImageView(frame: NSRect(x: 0, y: 0, width: 25, height: 25))
             
     /// Toggles the recording function on and off using the isActive Bool value
     @objc func toggle() {
@@ -103,6 +105,7 @@ class VideoCapture: NSObject, AVCaptureFileOutputRecordingDelegate {
         output.startRecording(to: generateOutputURL() as URL, recordingDelegate: self)
         
         isActive.toggle()
+        showOverlay()
     }
     
     /// Stops recording video
@@ -112,6 +115,7 @@ class VideoCapture: NSObject, AVCaptureFileOutputRecordingDelegate {
         resetCaptureSession()
         
         isActive.toggle()
+        hideOverlay()
     }
     
     func resetCaptureSession() {
@@ -179,5 +183,33 @@ class VideoCapture: NSObject, AVCaptureFileOutputRecordingDelegate {
 
     internal func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         print("stopped recording video")
+    }
+    
+    func showOverlay() {
+        var offset: CGFloat = 0
+        
+        if let image = NSImage(systemSymbolName: "video", accessibilityDescription: nil)?.withSymbolConfiguration(NSImage.SymbolConfiguration(pointSize: 30, weight: .medium)) {
+            if let window = NSApplication.shared.windows.first {
+                let isFullScreen = window.styleMask.contains(.fullScreen)
+                offset = isFullScreen ? 0 : 25
+            }
+            
+            imageView.frame.origin.y = offset
+            imageView.image = image
+            imageView.imageScaling = .scaleProportionallyUpOrDown
+            imageView.contentTintColor = .systemRed
+            imageView.canDrawSubviewsIntoLayer = true
+            imageView.wantsLayer = true
+            imageView.layer?.backgroundColor = NSColor.clear.cgColor
+            imageView.layer?.cornerRadius = 10.0
+            imageView.layer?.borderWidth = 2.0
+            imageView.layer?.borderColor = NSColor.clear.cgColor
+            
+            NSApp.mainWindow?.contentView?.addSubview(imageView)
+        }
+    }
+    
+    func hideOverlay() {
+        imageView.removeFromSuperview()
     }
 }

@@ -25,7 +25,7 @@ struct ContentView: View {
                     
                     let baseMenuItem = NSMenuItem(title: "Xbox Cloud", action: nil, keyEquivalent: "")
                     let baseMenu = NSMenu()
-                    baseMenu.addItem(withTitle: "Quit", action: #selector(NSApp.terminate), keyEquivalent: "w")
+                    baseMenu.addItem(withTitle: "Quit", action: #selector(NSApp.terminate), keyEquivalent: "q")
                     baseMenuItem.submenu = baseMenu
                     NSApp.mainMenu?.addItem(baseMenuItem)
                     
