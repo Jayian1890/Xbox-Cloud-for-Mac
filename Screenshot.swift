@@ -21,7 +21,8 @@ class Screenshot {
     }
     
     /// Take a snapshot of the the supplied WKWebView
-    func takeSnapshot(webview: WKWebView) {
+    func takeSnapshot() {
+        let webview = WebClient.webView
         webview.takeSnapshot(with: config) { image, error in
             if let error = error {
                 print("Error taking snapshot: \(error.localizedDescription)")
@@ -53,7 +54,7 @@ class Screenshot {
             let paths = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)
             let directory = paths[0]
             
-            let filename = "\(dateString).jpg"
+            let filename = "xboxcloud_\(dateString).jpg"
             let fileURL = directory.appendingPathComponent(filename)
             
             do {

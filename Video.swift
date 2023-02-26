@@ -125,7 +125,7 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         let dateString = dateFormatter.string(from: Date())
         
         let documentsPath = NSSearchPathForDirectoriesInDomains(.downloadsDirectory, .userDomainMask, true)[0] as String
-        let outputPath = "\(documentsPath)/\(dateString).mp4"
+        let outputPath = "\(documentsPath)/xboxcloud_\(dateString).mp4"
         let outputFileURL = NSURL(fileURLWithPath: outputPath)
         
         return outputFileURL

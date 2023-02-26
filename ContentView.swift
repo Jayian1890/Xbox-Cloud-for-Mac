@@ -20,15 +20,16 @@ struct ContentView: View {
         WebClient()
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    Button(action: { recordVideo() }) {
-                        Label("Record", systemImage: "video.circle").labelStyle(.titleAndIcon).foregroundColor(videoButtonColor)
-                    }.keyboardShortcut(KeyEquivalent("r"), modifiers: .command)
+                    Button(action: recordVideo) {
+                        Label("Record", systemImage: "video.circle")
+                            .labelStyle(.titleAndIcon)
+                            .foregroundColor(videoButtonColor)
+                    }.keyboardShortcut("r", modifiers: .command)
                 }
                 ToolbarItem(placement: .primaryAction) {
-                    Button(action: {
-                        Screenshot().takeSnapshot(webview: WebClient.webView)
-                    }) {
-                        Label("Screenshot", systemImage: "photo.circle").labelStyle(.titleAndIcon)
+                    Button(action: Screenshot().takeSnapshot) {
+                        Label("Screenshot", systemImage: "photo.circle")
+                            .labelStyle(.titleAndIcon)
                     }.keyboardShortcut(KeyEquivalent("s"), modifiers: .command)
                 }
             }
@@ -41,11 +42,7 @@ struct ContentView: View {
     
     func recordVideo() {
         videoEngine.toggle()
-        if videoEngine.isActive {
-            videoButtonColor = Color.red
-        } else {
-            videoButtonColor = Color.secondary
-        }
+        videoButtonColor = videoEngine.isActive ? .red : .secondary
     }
 }
 
