@@ -41,15 +41,16 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
             videoInput = AVCaptureScreenInput(displayID: CGMainDisplayID())
         }
         
-        if session.inputs.contains(videoInput!) {
-            session.removeInput(videoInput!)
+        if let input = videoInput, session.inputs.contains(input) {
+            session.removeInput(input)
         }
         
-        videoInput!.minFrameDuration = CMTimeMake(value: 1, timescale: framerate)
-        videoInput!.cropRect = getCapturedRect()
-        
-        if session.canAddInput(videoInput!) {
-            session.addInput(videoInput!)
+        if let input = videoInput {
+            input.minFrameDuration = CMTimeMake(value: 1, timescale: framerate)
+            input.cropRect = getCapturedRect()
+            if session.canAddInput(input) {
+                session.addInput(input)
+            }
         }
     }
     
