@@ -25,19 +25,18 @@ struct ContentView: View {
                     
                     let baseMenuItem = NSMenuItem(title: "Xbox Cloud", action: nil, keyEquivalent: "")
                     let baseMenu = NSMenu()
+                    baseMenu.addItem(withTitle: "Toggle Full Screen", action: #selector(NSApp.mainWindow?.toggleFullScreen(_:)), keyEquivalent: "f")
                     baseMenu.addItem(withTitle: "Quit", action: #selector(NSApp.terminate), keyEquivalent: "q")
                     baseMenuItem.submenu = baseMenu
-                    NSApp.mainMenu?.addItem(baseMenuItem)
+                    mainMenu?.addItem(baseMenuItem)
                     
                     let fileMenu = NSMenu(title: "File")
                     
                     let subMenuItem = NSMenuItem(title: "Record Video", action: #selector(videoCapture.toggle), keyEquivalent: "r")
-                    subMenuItem.keyEquivalentModifierMask = [.command]
                     subMenuItem.target = videoCapture
                     fileMenu.addItem(subMenuItem)
                     
                     let subMenuItem2 = NSMenuItem(title: "Take Screenshot", action: #selector(screenshot.takeSnapshot), keyEquivalent: "s")
-                    subMenuItem2.keyEquivalentModifierMask = [.command]
                     subMenuItem2.target = screenshot
                     fileMenu.addItem(subMenuItem2)
                     
