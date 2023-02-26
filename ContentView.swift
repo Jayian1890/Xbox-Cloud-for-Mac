@@ -15,8 +15,6 @@ struct ContentView: View {
     private let screenshot = Screenshot()
 
     private let webClient = WebClient()
-        
-    @State private var videoButtonColor = Color.secondary
     
     var body: some View {
         WebClient()
@@ -45,7 +43,7 @@ struct ContentView: View {
                     
                     let menuItem = NSMenuItem(title: "Menu2", action: nil, keyEquivalent: "")
                     menuItem.submenu = fileMenu
-                    NSApp.mainMenu?.addItem(menuItem)
+                    mainMenu?.addItem(menuItem)
                     
                     mainMenu?.update()
                 }
