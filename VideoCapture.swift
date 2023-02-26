@@ -9,7 +9,7 @@ import SwiftUI
 import AVFoundation
 
 /// A class that contains functions for recording the view/gameplay.
-class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
+class VideoCapture: NSObject, AVCaptureFileOutputRecordingDelegate {
         
     /// the frames per second used recording function
     var framerate: Int32 = 60

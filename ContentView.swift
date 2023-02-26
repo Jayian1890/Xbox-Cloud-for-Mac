@@ -10,7 +10,7 @@ import SwiftUI
 /// The main View for displaying and handling the primary app window.
 struct ContentView: View {
     
-    private let videoEngine = Video()
+    private let videoCapture = VideoCapture()
 
     private let webClient = WebClient()
         
@@ -35,14 +35,14 @@ struct ContentView: View {
             }
             .onAppear {
                 Task {
-                    videoEngine.ConfigureSession()
+                    videoCapture.ConfigureSession()
                 }
             }
     }
     
     func recordVideo() {
-        videoEngine.toggle()
-        videoButtonColor = videoEngine.isActive ? .red : .secondary
+        videoCapture.toggle()
+        videoButtonColor = videoCapture.isActive ? .red : .secondary
     }
 }
 
