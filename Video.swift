@@ -55,23 +55,23 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
     }
     
     func configureAudioInput() {
-        if let desiredDevice = deviceDiscovery(deviceName: "Xbox Cloud") {
-            do {
-                let audioInput = try AVCaptureDeviceInput(device: desiredDevice)
-                if session.canAddInput(audioInput) {
-                    session.addInput(audioInput)
-                }
-            } catch {
-                print("An error occurred: \(error.localizedDescription)")
-                return
+        let deviceName = "Xbox Cloud"
+        
+        if let desiredDevice = deviceDiscovery(deviceName: deviceName),
+            let audioInput = try? AVCaptureDeviceInput(device: desiredDevice) {
+            if session.canAddInput(audioInput) {
+                session.addInput(audioInput)
             }
+        } else {
+            print("Could not find device named \(deviceName)")
+            return
         }
     }
     
     /// Sets various configuration settings prior to recording.
     /// - WARNING: Requires third-party software such as Loopback for recording audio input
     func ConfigureSession() {
-        if isConfigured {
+        guard !isConfigured else {
             print("Session already configured.")
             return
         }
@@ -83,7 +83,6 @@ class Video: NSObject, AVCaptureFileOutputRecordingDelegate {
         }
         
         print("capture session configured")
-        
         isConfigured = true
     }
     
