@@ -56,6 +56,7 @@ struct ContentView: View {
                 NSApp.terminate(self)
             }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
