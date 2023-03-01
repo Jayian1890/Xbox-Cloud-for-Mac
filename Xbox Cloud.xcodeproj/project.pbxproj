@@ -29,6 +29,7 @@
 		7767804C29909F550086F2BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7767804E29909F560086F2BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7767805329909F560086F2BE /* xCloud.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xCloud.entitlements; sourceTree = "<group>"; };
+		776C533D29AFE40500DC6908 /* Xbox-Cloud-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Xbox-Cloud-Info.plist"; sourceTree = "<group>"; };
 		7788EE3E2997216C007B19C0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7797B39E29A7E44F00C6D705 /* WebClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,6 +57,7 @@
 		7767803E29909F550086F2BE = {
 			isa = PBXGroup;
 			children = (
+				776C533D29AFE40500DC6908 /* Xbox-Cloud-Info.plist */,
 				7767804929909F550086F2BE /* xCloud */,
 				7767804829909F550086F2BE /* Products */,
 			);
@@ -297,9 +299,11 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Xbox-Cloud-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Xbox Cloud Gaming";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright - Interlaced Pixel";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Gives access to the the mic for use with xcloud games that support voice";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -329,9 +333,11 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Xbox-Cloud-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Xbox Cloud Gaming";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright - Interlaced Pixel";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Gives access to the the mic for use with xcloud games that support voice";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
